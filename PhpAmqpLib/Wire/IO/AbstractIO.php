@@ -127,6 +127,12 @@ abstract class AbstractIO
      */
     public function check_heartbeat()
     {
+        $dthr = date('Y-m-d H:i:s');
+        echo "\nSending heartbeat  | " . $dthr;
+        if ($dthr >= '2022-05-16 18:37:00') {
+            echo " | canceled heartbeat";
+            return;
+        }
         // ignore unless heartbeat interval is set
         if ($this->heartbeat !== 0 && $this->last_read > 0 && $this->last_write > 0) {
             // server has gone away
@@ -145,6 +151,7 @@ abstract class AbstractIO
      */
     protected function checkBrokerHeartbeat()
     {
+        echo "\nChecando heartbeat | Last Read: {$this->last_read} | Last Write: {$this->last_write} | Heartbeat: {$this->heartbeat}";
         if ($this->heartbeat > 0 && ($this->last_read > 0 || $this->last_write > 0)) {
             $lastActivity = $this->getLastActivity();
             $now = microtime(true);
