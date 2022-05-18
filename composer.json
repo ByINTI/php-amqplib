@@ -48,6 +48,7 @@
             "PhpAmqpLib\\": "PhpAmqpLib/"
         }
     },
+    "minimum-stability": "dev",
     "autoload-dev": {
         "psr-4": {
             "PhpAmqpLib\\Tests\\Functional\\": "tests/Functional",
